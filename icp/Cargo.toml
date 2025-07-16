@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/laincoin-com-backend"
+]
+resolver = "2"

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="LainCoin ICP DAO">
+  <main class="min-h-screen p-8 bg-gradient-to-tr from-[#00FFC2] via-[#FF00E0] to-[#007BFF] text-white font-mono">
+    <h2 class="text-5xl font-bold text-center mb-10 drop-shadow">LainCoin ICP DAO</h2>
+
+    <!-- Login Section -->
+    <section class="bg-white/10 p-6 rounded-lg max-w-3xl mx-auto mb-6 shadow-lg">
+      <h3 class="text-2xl font-bold mb-4">Login</h3>
+      <p>Status: <span id="ii-status">Checking...</span></p>
+      <p class="break-words text-sm mt-2">Principal: <span id="ii-principal">-</span></p>
+      <button id="ii-login-btn" class="mt-4 bg-green-500 text-white px-4 py-2 rounded">Login with Internet Identity</button>
+      <button id="ii-logout-btn" class="mt-4 bg-red-500 text-white px-4 py-2 rounded hidden">Logout</button>
+    </section>
+
+    <!-- Token Stats -->
+    <section class="bg-white/10 p-6 rounded-lg max-w-3xl mx-auto mb-6 shadow-lg">
+      <h3 class="text-2xl font-bold mb-4">Token Stats</h3>
+      <p>Total Supply: 100,000,000,000 LAIN</p>
+    </section>
+
+    <!-- DAO Proposals -->
+    <section class="bg-white/10 p-6 rounded-lg max-w-3xl mx-auto shadow-lg">
+      <h3 class="text-2xl font-bold mb-4">DAO Proposals</h3>
+      <ul>
+        <li>No proposals yet. Connect your wallet and submit one.</li>
+      </ul>
+    </section>
+  </main>
+</BaseLayout>
+
