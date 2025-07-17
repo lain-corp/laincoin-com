@@ -44,29 +44,32 @@ jobs:
         dfx start --background --clean
 
     - name: Generate canister JS bindings
+      working-directory: laincoin_com_online/src/laincoin_com_online_frontend
       run: |
-        dfx generate laincorp_com_backend
+        dfx generate laincoin_com_online_backend
 
     - name: Install frontend dependencies
-      working-directory: src/laincorp_com_frontend
+      working-directory: laincoin_com_online/src/laincorp_com_online_frontend
       run: |
         npm ci
         npm install
         npm run build
 
     - name: Generate Cargo.lock and vulnerability checker
-      working-directory: laincorp_com_online/src/laincorp_com_backend
+      working-directory: laincoin_com_online/src/laincoin_com_backend
       run: |
         cargo install cargo-audit
         cargo generate-lockfile
 
     - name: Build canisters locally
+      working-directory: laincoin_com_online/src/laincorp_com_online_frontend
       run: |
-        dfx generate laincorp_com_backend
+        dfx generate laincorp_com_online_backend
         dfx canister create --all
         dfx build
 
     - name: Deploy Canisters to Playground
+      working-directory: laincoin_com_online/src/laincorp_com_online_frontend
       run: |
         cargo build --target wasm32-unknown-unknown --release --verbose
         dfx deploy  
