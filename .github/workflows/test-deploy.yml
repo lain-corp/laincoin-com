@@ -49,7 +49,7 @@ jobs:
         dfx generate laincoin_com_online_backend
 
     - name: Install frontend dependencies
-      working-directory: laincoin_com_online/src/laincorp_com_online_frontend
+      working-directory: laincoin_com_online/src/laincoin_com_online_frontend
       run: |
         npm ci
         npm install
@@ -62,14 +62,14 @@ jobs:
         cargo generate-lockfile
 
     - name: Build canisters locally
-      working-directory: laincoin_com_online/src/laincorp_com_online_frontend
+      working-directory: laincoin_com_online/src/laincoin_com_online_frontend
       run: |
-        dfx generate laincorp_com_online_backend
+        dfx generate laincoin_com_online_backend
         dfx canister create --all
         dfx build
 
     - name: Deploy Canisters to Playground
-      working-directory: laincoin_com_online/src/laincorp_com_online_frontend
+      working-directory: laincoin_com_online/src/laincoin_com_online_frontend
       run: |
         cargo build --target wasm32-unknown-unknown --release --verbose
         dfx deploy  
