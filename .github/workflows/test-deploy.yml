@@ -1,0 +1,72 @@
+name: Deploy to IC Testnet (Local)
+
+on:
+  push:
+    branches: [dev, test]
+  workflow_dispatch:
+
+jobs:
+  deploy-testnet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        target: wasm32-unknown-unknown
+        override: true
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.20.8
+
+    - name: Install dfx CLI (non-interactive)
+      run: |
+        curl -L -o dfx.tar.gz https://github.com/dfinity/sdk/releases/download/0.28.0/dfx-0.28.0-x86_64-linux.tar.gz
+        curl -L -o checksum https://github.com/dfinity/sdk/releases/download/0.28.0/dfx-0.28.0-x86_64-linux.tar.gz.sha256
+        if [ "$(sha256sum dfx.tar.gz | awk '{ print $1}')" = "$(cat checksum | awk '{ print $1 }')" ]; then
+          echo "Outputs match"
+        else
+          echo "Outputs do not match"
+          exit 1
+        fi
+        tar -xvzf dfx.tar.gz
+        sudo mv dfx /usr/local/bin/
+        dfx --version
+
+    - name: Start Local Replica
+      run: |
+        dfx start --background --clean
+
+    - name: Generate canister JS bindings
+      run: |
+        dfx generate laincorp_com_backend
+
+    - name: Install frontend dependencies
+      working-directory: src/laincorp_com_frontend
+      run: |
+        npm ci
+        npm install
+        npm run build
+
+    - name: Generate Cargo.lock and vulnerability checker
+      working-directory: laincorp_com_online/src/laincorp_com_backend
+      run: |
+        cargo install cargo-audit
+        cargo generate-lockfile
+
+    - name: Build canisters locally
+      run: |
+        dfx generate laincorp_com_backend
+        dfx canister create --all
+        dfx build
+
+    - name: Deploy Canisters to Playground
+      run: |
+        cargo build --target wasm32-unknown-unknown --release --verbose
+        dfx deploy  

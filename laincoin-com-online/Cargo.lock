@@ -331,7 +331,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "laincoin-com-online-backend"
+name = "laincoin_com_online_backend"
 version = "0.1.0"
 dependencies = [
  "candid",

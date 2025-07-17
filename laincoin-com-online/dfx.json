@@ -1,19 +1,18 @@
 {
   "canisters": {
-    "laincoin-com-online-backend": {
-      "candid": "src/laincoin-com-online-backend/laincoin-com-online-backend.did",
-      "package": "laincoin-com-online-backend",
+    "laincoin_com_online_backend": {
+      "candid": "src/laincoin_com_online_backend/laincoin_com_online_backend.did",
+      "package": "laincoin_com_online_backend",
       "type": "rust"
     },
-    "laincoin-com-online-frontend": {
+    "laincoin_com_online_frontend": {
       "dependencies": [
-        "laincoin-com-online-backend"
+        "laincoin_com_online_backend"
       ],
       "source": [
-        "src/laincoin-com-online-frontend/dist"
+        "src/laincoin_com_online_frontend/dist"
       ],
-      "type": "assets",
-      "workspace": "laincoin-com-online-frontend"
+      "type": "assets"
     }
   },
   "defaults": {
