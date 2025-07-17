@@ -1,0 +1,23 @@
+.wallet-connection {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.wallet-button {
+  background: #0a5e0a;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.wallet-button:hover {
+  background: #0e801a;
+}
+
+.wallet-status {
+  font-family: monospace;
+  color: #0a5e0a;
+}

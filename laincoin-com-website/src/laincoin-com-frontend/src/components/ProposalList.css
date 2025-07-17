@@ -1,0 +1,44 @@
+.proposal-list {
+  padding: 2rem;
+  background-color: #f4fff4;
+  border: 1px solid #cceccc;
+  border-radius: 10px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: #0a5e0a;
+  margin-bottom: 1.5rem;
+}
+
+.proposal-card {
+  border: 1px solid #a0dca0;
+  background: #ffffff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.description {
+  font-style: italic;
+  color: #333;
+}
+
+.vote-stats {
+  margin-top: 0.5rem;
+  font-family: monospace;
+}
+
+.vote-for {
+  color: green;
+  margin-right: 1rem;
+}
+
+.vote-against {
+  color: red;
+}
+
+.status {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}

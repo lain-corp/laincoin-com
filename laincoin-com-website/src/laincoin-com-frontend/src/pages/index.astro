@@ -1,0 +1,23 @@
+---
+import Header from '../components/Header.tsx';
+import WalletConnect from '../components/WalletConnect.tsx';
+import ProposalList from '../components/ProposalList.tsx';
+import VotePanel from '../components/VotePanel.tsx';
+import '../styles/global.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LainCoin Treasury on Gnosis</title>
+  </head>
+  <body class="gnosis-page">
+    <main class="container">
+      <Header client:load />
+      <WalletConnect client:load />
+      <ProposalList client:load />
+      <VotePanel client:load />
+    </main>
+  </body>
+</html>
