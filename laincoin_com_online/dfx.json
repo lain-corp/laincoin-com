@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "laincoin_com_online_backend": {
+      "candid": "src/laincoin_com_online_backend/laincoin_com_online_backend.did",
+      "package": "laincoin_com_online_backend",
+      "type": "rust"
+    },
+    "laincoin_com_online_frontend": {
+      "dependencies": [
+        "laincoin_com_online_backend"
+      ],
+      "source": [
+        "src/laincoin_com_online_frontend/dist"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
